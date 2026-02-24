@@ -1,13 +1,24 @@
+// Import React and useState hook for component creation and state management
 import React, { useState } from 'react'
 
+// SearchHero component - displays the main flight search interface
+// Props:
+//   - onSearch: callback function triggered when search form is submitted
 const SearchHero = ({ onSearch }) => {
+  // Search form state variables with default values
+  // Origin city
   const [from, setFrom] = useState('Mumbai')
+  // Destination city
   const [to, setTo] = useState('Kolkata')
+  // Departure date
   const [date, setDate] = useState('2021-10-17')
+  // Number of passengers
   const [passengers, setPassengers] = useState(1)
 
+  // Handle form submission - prevents default behavior and calls onSearch callback
   const handleSubmit = (event) => {
     event.preventDefault()
+    // Pass all search parameters to parent component
     onSearch({
       from,
       to,
@@ -22,20 +33,27 @@ const SearchHero = ({ onSearch }) => {
     <section className="hero">
       <div className="hero-overlay">
         <div className="search-card">
+          {/* Trip type selection buttons */}
           <div className="trip-types">
+            {/* Oneway trip option - currently active */}
             <button type="button" className="trip-type active">
               Oneway
             </button>
+            {/* Return trip option */}
             <button type="button" className="trip-type">
               Return
             </button>
+            {/* Multi-city trip option */}
             <button type="button" className="trip-type">
               Multicity
             </button>
           </div>
 
+          {/* Main search form */}
           <form onSubmit={handleSubmit} className="search-form">
+            {/* Form inputs row */}
             <div className="search-row">
+              {/* Origin city input field */}
               <div className="field">
                 <label htmlFor="from">From</label>
                 <input
@@ -45,6 +63,7 @@ const SearchHero = ({ onSearch }) => {
                 />
               </div>
 
+              {/* Destination city input field */}
               <div className="field">
                 <label htmlFor="to">To</label>
                 <input
@@ -54,6 +73,7 @@ const SearchHero = ({ onSearch }) => {
                 />
               </div>
 
+              {/* Departure date input field */}
               <div className="field">
                 <label htmlFor="date">Depart</label>
                 <input
@@ -64,6 +84,7 @@ const SearchHero = ({ onSearch }) => {
                 />
               </div>
 
+              {/* Number of passengers input field - smaller field size */}
               <div className="field small">
                 <label htmlFor="passengers">Passengers</label>
                 <input
@@ -77,11 +98,13 @@ const SearchHero = ({ onSearch }) => {
                 />
               </div>
 
+              {/* Cabin class display - static Economy value */}
               <div className="field small">
                 <label>Cabin</label>
                 <div className="pill">Economy</div>
               </div>
 
+              {/* Submit button to trigger search */}
               <button type="submit" className="search-btn">
                 Search
               </button>
@@ -93,5 +116,6 @@ const SearchHero = ({ onSearch }) => {
   )
 }
 
+// Export component for use in parent components
 export default SearchHero
 

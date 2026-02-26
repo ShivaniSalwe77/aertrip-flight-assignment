@@ -19,6 +19,7 @@ const AIRLINE_LOGOS = {
 //   - flight: flight object containing fare, leg, and route information
 //   - cityNamesByCode: lookup map to convert airport codes to city names
 const FlightCard = ({ flight, cityNamesByCode }) => {
+	console.log('Rendering FlightCard for flight:', flight)
 	// Extract first leg and flight details from flight object
 	const leg = flight.leg?.[0]
 	const flightData = leg?.flights?.[0]

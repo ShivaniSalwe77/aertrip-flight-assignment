@@ -15,7 +15,9 @@ function App() {
 	// Extract flight data from imported JSON
 	const flightResults = data?.data?.flights?.[0]?.results
 	const allFlights = flightResults?.j || []
+	console.log('Loaded flight results:', allFlights)
 	const filtersMeta = flightResults?.f?.[0]
+	console.log('Loaded filters metadata:', filtersMeta)
 
 	// Extract price range metadata for price slider
 	const minPrice = filtersMeta?.pr?.minPrice ?? 0
@@ -212,3 +214,28 @@ function App() {
 }
 
 export default App
+
+
+// JSON response to display data
+
+// 1.	Keys for Results Screen:
+
+// Use the “j” array from below response to display data on the results screen. 
+// Below are the keys used to display the data on the results screen:
+
+// ●	“fr” - departure city name
+// ●	“dt” -  departure time 
+// ●	“to” - arrival city name
+// ●	“at” - Arrival time
+// ●	“al” - airline of that flight,
+// ●	“ft” - total time of the flight
+// ●	“farepr” - amount
+
+
+// 2.	Keys for Filters:
+
+// Use the “f” array from below response to display data on the filter screen. Below are the keys used to display the data.
+// ●	“pr” -  Price(min/Max).
+// ●	"dt" -  Departure time (min: earliest/Max: latest)
+// ●	"at" -  arrival time (min: earliest/Max: latest)
+// ●	"tt"  -   total duration (min: minTime/ max: maxTime)
